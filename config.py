@@ -2,6 +2,8 @@
 import  pandas as pd
 
 #=== Initializing a dataframe with required data from plan xl
+import xlsxwriter
+
 plan_df = pd.DataFrame()
 plan_df = plan_df.fillna(0) # with 0s rather than NaNs
 ##===  Rejected Plan File Save
@@ -26,11 +28,7 @@ mail_cc = ""
 mail_planner = ""
 mail_bcc = ""
 
-tergate_header_dg06 =['Node', 'Country', 'DN Set', 'Prefix', 'RTANA', 'RT', 'SRT Selection Mode', 'SRT#', 'Existing SRT', 'Proposed SRT', 'Existing %', 'Proposed %']
-tergate_header_dg10 = ['Node', 'Country', 'DN Set', 'Prefix', 'RTANA', 'RT', 'SRT Selection Mode', 'SRT#', 'Existing SRT', 'Proposed SRT', 'Existing %', 'Proposed %']
 tergate_header = ['Node', 'Country', 'DN Set', 'Prefix', 'RTANA', 'RT', 'SRT Selection Mode', 'SRT#', 'Existing SRT', 'Proposed SRT', 'Existing %', 'Proposed %']
-
-
 
 virtual_device_code = {
         "DG05"  : "DG05_MSOFT",
@@ -68,3 +66,6 @@ virtual_sps_list = {
     'VLSP01_SPS': '10.180.3.83',
     'ALSP01_SPS': '10.180.11.83'
 }
+
+unmatched_rt =[]
+matched_rt =[]

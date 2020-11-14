@@ -12,7 +12,7 @@ class icx:
 
     def __del__(self):
 
-        print('Destructor called, File Closed')
+        print('Destructor called')
 
 
     def prepare_lst_script(self,last_code, fragment,head,tail) :
@@ -27,7 +27,7 @@ class icx:
             print(lst_script)
             file_writer = open(f"{config.script_path}{config.f_n_lst_script}", "a")
             file_writer.write(lst_script)
-            break
+            break #run only first time a block of fragment will create one lst script
             # else:
             #     print("Send Mail")
 
@@ -60,14 +60,14 @@ class icx:
                 # #  Go to step 2
                  if self.check_fragment_1_1(fragment,f_first_index,i) : #verify Sumation of each Fragment
                     #Step 2: Script Preparation
-                     print("Verified Each Part of Fragment")
-                     print(fragment)
+                     print("Verified Each Part of Fragment " +df.loc[f_first_index,"RT"] )
+                     # print(fragment)
                      self.prepare_lst_script(last_code,fragment,f_first_index,i)
                  else:
                      ##=== Save the unused Fragment into xl
                      config.plan_reject_df = config.plan_reject_df.append(fragment)
-                     print( "Failed ! #verify Sumation of each Fragment")
-                     print("Mail prepare to shoot Pending")
+                     # print( "Failed ! #verify Sumation of each Fragment"+ df.loc[f_first_index,"RT"])
+                     # print("Mail prepare to shoot Pending")
 
                  f_first_index = i #next fragment first index
             else:
